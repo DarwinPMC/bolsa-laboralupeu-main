@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  mysql_db:
+    image: mysql:5.7
+    container_name: laravel_mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Permite que MySQL se ejecute sin contraseña
+      MYSQL_DATABASE: bolsa_laboralupeu  # Nombre de la base de datos que se creará
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql  # Persistencia de datos para MySQL
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_app
+    ports:
+      - "8000:8000"  # Expone el puerto 8000 de Laravel
+    volumes:
+      - .:/app  # Monta el directorio de tu aplicación en /app dentro del contenedor
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql_db  # Debe coincidir con el nombre del servicio MySQL
+      - DB_PORT=3306
+      - DB_DATABASE=bolsa_laboralupeu
+      - DB_USERNAME=root
+      - DB_PASSWORD=  # Sin contraseña
+
+volumes:
+  dbdata:

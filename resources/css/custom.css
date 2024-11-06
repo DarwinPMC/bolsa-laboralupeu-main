@@ -1,0 +1,186 @@
+/* Variables globales */
+:root {
+    --primary-color: #5a67d8;
+    --hover-primary-color: #4c51bf;
+    --background-color: #f3f4f6;
+    --text-color: #333;
+    --link-color: #666;
+    --header-bg-color: #fff;
+    --footer-bg-color: #1a202c;
+    --font-family: 'Figtree', sans-serif;
+}
+
+/* Estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background: var(--header-bg-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+}
+
+nav a {
+    color: var(--link-color);
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover, nav a:focus {
+    color: var(--primary-color);
+}
+
+.button, a.button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+}
+
+.button-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.button-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.button-solid {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.button-solid:hover {
+    background-color: var(--hover-primary-color);
+}
+
+/* Video de fondo ajustable */
+.hero-bg {
+    position: relative;
+    overflow: hidden;
+    height: 60vh; /* Altura ajustable para diferentes dispositivos */
+}
+
+.hero-bg video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 30px 30px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+footer {
+    background: var(--footer-bg-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media Queries para ajustes responsivos */
+@media (max-width: 768px) {
+    .container, .hero-content {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .hero-bg {
+        height: 50vh; /* Menor altura para adaptar a dispositivos móviles */
+    }
+}
+/* Estilos base */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Muestra el botón de hamburguesa en móviles */
+    }
+
+    .menu, .login-buttons {
+        display: none; /* Oculta la navegación y botones de login en móviles */
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .mobile-search {
+        display: block; /* Muestra el formulario de búsqueda en móviles */
+    }
+}
+
+.hamburger.active + .menu,
+.hamburger.active + .menu + .login-buttons {
+    display: flex; /* Muestra la navegación cuando el botón de hamburguesa está activo */
+}
+
+.menu.show {
+    display: flex; /* Muestra la navegación en dispositivos más grandes o cuando está activo */
+}
