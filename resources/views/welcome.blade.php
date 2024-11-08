@@ -318,7 +318,7 @@
     <footer class="bg-blue-900 text-white py-8">
         <div class="container mx-auto text-center">
             <p>BolsaUPeU &copy; 2024 - Todos los derechos reservados</p>
-            <p>Contacto: Fernando Yunganina | Tel: +51 932 460 171 | Email: info@bolsaupeu.com</p>
+            <p>Contacto: Darwin Mamani | Tel: +51 927 999 598 | Email: info@bolsaupeu.com</p>
         </div>
     </footer>
 
